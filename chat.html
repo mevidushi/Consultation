@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-ad-client="ca-pub-9721508132791836" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - An AI powered Chatbot Built on latest WHO Guidelines</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename="iofrm_files/Coronavirus-illustration.png") }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="iofrm_files/iofrm-style.css") }}">
+        <style type="text/css">
+        .fixed-panel {
+            min-height: 400px;
+            max-height: 400px;
+            background-color: #1a3d37;
+            color: white;
+            overflow: auto;
+        }
+        .media-list {
+            overflow: auto;
+            clear: both;
+            display: table;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: normal;
+            line-break: strict;
+        }
+        .panel {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 6px solid transparent;
+            border-radius: 25px;
+            -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+        .panel-info {
+            border-color: #0c2735;
+        }
+        .panel-info>.panel-heading {
+            color: white;
+            background-color: #0c2735;
+            border-color: #0c2735;
+        }
+        .panel-footer {
+            padding: 10px 15px;
+            background-color: #0c2735;
+            border-top: 1px solid #0c2735;
+            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px
+        }
+        body {
+            background-color: #44C97D;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            -moz-osx-font-smoothing: grayscale;
+}
+
+        html, body {
+            background-color: #44C97D;
+            height: 100%;
+}
+.panel-footer .form-button {
+    background-color: #0c2735;
+    color: #0c2735;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    text-align:center;
+}
+
+.panel-footer .form-button .ibtn {
+    margin-top: 15px;
+    border-radius: 6px;
+    border: 0;
+    padding: 6px 28px;
+    background-color: #fff;
+    color: #0c2735;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 10px;
+    outline: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.16);
+}
+
+.panel-footer .form-button .ibtn:last-child {
+    margin-right: 0;
+}
+
+.panel-footer .form-button .ibtn:hover, .form-content .form-button .ibtn:focus {
+    -webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
+}
+
+.panel-footer .form-button .ibtn.less-padding {
+    padding: 6px 15px !important;
+}
+
+.panel-footer .form-button .ibtn.extra-padding {
+    font-size: 16px;
+    padding: 10px 32px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="container background-color: rgb(255,0,255);">
+            <div class="row">
+                
+                ​
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="form-content" style="background-color: #44C97D; margin-top:15px">
+                        <div class="form-items" style="background-color: #44C97D;margin-top:15px">
+                            <div class="page-links">
+                            <div class="form-button">
+                                <form method = "POST" action = "/handlechat" enctype = "multipart/form-data">
+                                    
+                                <a href="#" class="active">Chat</a>
+                                <a href="/roadmap">home</a>
+                                <a href="/rchat"><button id="submit" type="button" value="submit" class="ibtn">Reset</button></a>
+                                <button id="submit" type="submit" value="submit" class="ibtn">Result</button>
+                            </div>
+                        </form>
+                        <hr><div style="background-color: #1a3d37;height:5em;width:100%;border: 5px solid #000;border-radius: 10px">
+                            <h5 style="color:white;vertical-align:middle;margin:auto;line-height:2em;" align=center position=center >Write 'covidoc' in the chat box below and send to begin your guided conversation.</h5></div><hr>
+                            </div>
+                        </div>
+
+                    <div id="chatPanel" class="panel panel-info">
+                        <div class="panel-heading">
+                            <strong><span class="glyphicon glyphicon-globe"></span> AI Powered Chatbot! (Covid-19)  </strong>
+                        </div>
+                        <div class="panel-body fixed-panel">
+                            <ul class="media-list">
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <form method="post" id="chatbot-form">
+                                <div class="input-group">
+<input type="hidden" name="user" value={{ name }} />
+<input type="hidden" name="sex" value={{ gender }}/>
+<input type="hidden" name="age" value={{ age }}/>
+                                    <input type="text" class="form-control" placeholder="'covidoc' to begin" name="messageText" id="messageText" autofocus/>
+                                    </br>
+                                    <span class="form-button">
+                                        <button class="ibtn" type="button" id="chatbot-form-btn">Send</button>
+                                        <button class="ibtn" type="button" id="chatbot-form-btn-clear">Clear</button>
+                                        <button class="ibtn" type="button" id="chatbot-form-btn-voice">Voice</button>
+                                    </span>
+                                    </br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    <div style="background-color: #1a3d37;height:5em;width:100%;border: 5px solid #000;border-radius: 10px">
+                        <h5 style="color:white;vertical-align:middle;margin:auto;line-height:4em;" align=center position=center >Click on reset button on top to reset the chat session</h5></div><hr>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script>
+            var exports = {};
+        </script>
+        <script src="https://unpkg.com/speech-to-text@0.7.4/lib/index.js"></script>
+        <script>
+        $(function() {
+            var synth = window.speechSynthesis;
+
+            var msg = new SpeechSynthesisUtterance();
+            var voices = synth.getVoices();
+            msg.voice = voices[0];
+            msg.rate = 1;
+            msg.pitch = 1;
+
+            $('#chatbot-form-btn').click(function(e) {
+                e.preventDefault();
+                $('#chatbot-form').submit();
+            });
+            $('#chatbot-form-btn-clear').click(function(e) {
+                e.preventDefault();
+                $('#chatPanel').find('.media-list').html('');
+            });
+            $('#chatbot-form-btn-voice').click(function(e) {
+                e.preventDefault();
+
+                var onAnythingSaid = function (text) {
+                    console.log('Interim text: ', text);
+                };
+                var onFinalised = function (text) {
+                    console.log('Finalised text: ', text);
+                    $('#messageText').val(text);
+                };
+                var onFinishedListening = function () {
+                    // $('#chatbot-form-btn').click();
+                };
+
+                try {
+                    var listener = new SpeechToText(onAnythingSaid, onFinalised, onFinishedListening);
+                    listener.startListening();
+
+                    setTimeout(function () {
+                        listener.stopListening();
+                        if ($('#messageText').val()) {
+                            $('#chatbot-form-btn').click();
+                        }
+                    }, 5000);
+                } catch (error) {
+                    console.log(error);
+                }
+            });
+
+            $('#chatbot-form').submit(function(e) {
+                e.preventDefault();
+                var message = $('#messageText').val();
+                $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div style = "text-align:right; color : #2EFE2E" class="media-body">' + message + '<hr/></div></div></div></li>');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/ask",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#messageText').val('');
+                        var answer = response.answer;
+                        const chatPanel = document.getElementById("chatPanel");
+                        $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div style = "color : white" class="media-body">' + answer + '<hr/></div></div></div></li>');
+                        $(".fixed-panel").stop().animate({ scrollTop: $(".fixed-panel")[0].scrollHeight}, 1000);
+                        
+                        msg.text = answer;
+                        //speechSynthesis.speak(msg);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+        </script>
+    </body>
+</html>

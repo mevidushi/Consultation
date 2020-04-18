@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<style>
+tr.bordered {
+    border: 10px solid #000;
+}
+</style>
+<body>
+
+              
+<div data-role="page" id="pageone" style="background:#192d35">
+  <div data-role="header" >
+    <h1>Reports</h1>
+  </div>
+  
+
+  <!--div data-overlay="" class="min-vh-100 bg-light d-flex flex-column justify-content-md-center o-hidden" style="padding-top: 80px !important;">
+    <section class="py-3">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-4 col-lg-5 col-md-6 mb-5 mb-md-0"-->
+
+          <!--  </div>
+          </div>
+        </div>
+
+  </section>
+  </div>-->
+
+                <form width=50px>
+                <div class="form-group" width=50px>
+  <select id="cars" class="form-control" name="cars" width=50px>
+    <option class="form-control" value="volvo">Volvo</option>
+    <option class="form-control" value="saab">Saab</option>
+    <option class="form-control" value="fiat">Fiat</option>
+    <option class="form-control" value="audi">Audi</option>
+  </select>
+  <button class="btn btn-primary btn-block" type="submit">Start Screening</button>
+  </div>
+                </form>
+  {% for i in range((symptoms)| length) %}
+  <div data-role="main" class="ui-content" style="margin-top:50px">
+    <div data-role="collapsible">
+      <h1>{{time[i]}}</h1>
+      <table style="width: 100%;">
+          <tr class="bordered">
+              <td style="text-align:center"><strong>Class</strong></td>
+              <td style="text-align:center"><strong>Name</strong></td>
+              <td style="text-align:center"><strong>Common Name</strong></td>
+              <td style="text-align:center"><strong>Gender specifics</strong></td>
+              <td style="text-align:center"><strong>Seriousness</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid black">
+            <td colspan="100%"></td>
+          </tr>
+          <tr style="border-bottom:1px solid black">
+            <td colspan="100%"></td>
+          </tr>
+          
+      {% for j in symptoms[i] %}
+      <tr>
+          <td style="text-align:center">{{ j[0] }}</td>
+          <td style="text-align:center">{{ j[1] }}</td>
+          <td style="text-align:center">{{ j[2] }}</td>
+          <td style="text-align:center">{{ j[3] }}</td>
+          <td style="text-align:center">{{ j[4] }}</td>
+      </tr>
+      {% endfor %}
+      </table>
+      <div data-role="collapsible">
+          <h1>A.I. Diagnosis</h1>
+          <table style="width: 100%;">
+          <tr class="bordered">
+              <td style="text-align:center"><strong>Name</strong></td>
+              <td style="text-align:center"><strong>Common Name</strong></td>
+              <td style="text-align:center"><strong>Probability</strong></td>
+          </tr>
+          <tr style="border-bottom:1px solid black">
+            <td colspan="100%"></td>
+          </tr>
+          <tr style="border-bottom:1px solid black">
+            <td colspan="100%"></td>
+          </tr>
+        {% for j in conditions[i] %}
+        <tr>
+            <td style="text-align:center">{{ j[0] }}</td>
+            <td style="text-align:center">{{ j[1] }}</td>
+            <td style="text-align:center">{{ j[2] }}</td>
+        </tr>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </table>
+  <div data-role="footer">
+      <h1>Condition 1</h1>
+  </div>
+  <p>{{ listdetail0[0] |safe }}</p>
+  <div data-role="footer">
+      <h1>Condition 2</h1>
+  </div>
+  <p>{{ listdetail1[0] |safe }}</p>
+  <div data-role="footer">
+      <h1>Condition 3</h1>
+  </div>
+  <p>{{ listdetail2[0] |safe }}</p>
+</div>
+
+</body>
+</html>
